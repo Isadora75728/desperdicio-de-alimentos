@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prato Limpo – Desperdício de alimentos na escola</title>
+  <link rel="icon" type="image/png" href="images-removebg-preview.png">
+  <!-- Fontes com serifa: DM Serif Display (títulos) e Source Serif 4 (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="progresso" id="progresso"></div>
+<div id="fundoAmbiente" aria-hidden="true"></div>
+
+<!-- ========== CABEÇALHO ========== -->
+<header class="topo" id="topo">
+  <div class="barra">
+    <!-- SÍMBOLO DA ESCOLA: troque o SVG por <img src="simbolo-escola.png" alt="Símbolo da escola"> -->
+    <div class="simbolo">
+     <img src="images-removebg-preview.png" alt="Símbolo da escola" width="48" height="48">
+      <span>Escola Estadual Fernando Otávio</span>
+    </div>
+    <!-- LOGO DO PROJETO -->
+    <a class="logo" href="#inicio" aria-label="Prato Limpo – início">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="34" r="24" fill="#fbf1c7" stroke="#fff" stroke-width="3"/>
+        <circle cx="32" cy="34" r="14" fill="none" stroke="#2f7d4f" stroke-width="2"/>
+        <path d="M32 41c-8-2-10-10-6-16 8 0 12 6 6 16z" fill="#2f7d4f"/>
+      </svg>
+      <strong>Prato Limpo</strong>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu">
+      <a href="#quem">A merenda</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#conexoes">Conexões</a>
+      <a href="#agua">Água</a>
+      <a href="#tempo">Tempo</a>
+      <a href="#energia">Energia</a>
+      <a href="#noticias">Notícias</a>
+      <a href="#resultados">Resultados</a>
+    </nav>
+  </div>
+</header>
+
+<section class="topo-hero">
+  <div class="hero" id="inicio">
+    <div>
+      <p class="hero-selo">Consumo consciente</p>
+      <h1>Desperdício de alimentos na escola</h1>
+      <p>Cada refeição importa: aproveite a merenda e evite o desperdício.</p>
+      <a class="btn" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-contorno" href="#noticias">Ler notícias</a>
+      <nav class="hero-topicos" aria-label="Explore os temas do projeto">
+        <a href="#conexoes">Alimento</a>
+        <a href="#agua">Água</a>
+        <a href="#tempo">Tempo</a>
+        <a href="#energia">Energia</a>
+      </nav>
+    </div>
+    <!-- Prato interativo: clique nas fatias para "comer" -->
+    <div class="prato-box">
+      <svg viewBox="0 0 200 200" class="prato" role="group" aria-label="Prato com quatro porções">
+        <circle cx="100" cy="100" r="98" fill="#fff"/>
+        <circle cx="100" cy="100" r="92" fill="#f3efe2"/>
+        <g class="fatias">
+          <path tabindex="0" role="button" aria-label="Comer porção" d="M100 100V10A90 90 0 0 1 190 100Z" fill="#2f7d4f"/>
+          <path tabindex="0" role="button" aria-label="Comer porção" d="M100 100H190A90 90 0 0 1 100 190Z" fill="#f2cf5b"/>
+          <path tabindex="0" role="button" aria-label="Comer porção" d="M100 100V190A90 90 0 0 1 10 100Z" fill="#8fc29e"/>
+          <path tabindex="0" role="button" aria-label="Comer porção" d="M100 100H10A90 90 0 0 1 100 10Z" fill="#1f5fa8"/>
+        </g>
+      </svg>
+      <p id="pratoMsg" class="prato-msg" aria-live="polite">Clique nas porções do prato.</p>
+      <button class="btn btn-claro" id="pratoReset" type="button" hidden>Servir de novo</button>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<!-- ========== QUEM VAI MERENDAR ========== -->
+<section id="quem" class="secao reveal">
+  <h2>Quem vai merendar</h2>
+  <p class="intro">A merenda é destinada a todos os alunos da escola. Abra cada item para entender o motivo.</p>
+  <div class="lista">
+    <details><summary>Alunos de todas as turmas</summary>
+      <p>A merenda garante energia para o período de aulas. Todos têm direito ao prato; o que importa é aproveitar o que foi servido.</p></details>
+    <details><summary>Servir só o que vai ser comido</summary>
+      <p>Repetir é permitido. Servir pouco e voltar para pegar mais evita sobras no prato, que são descartadas.</p></details>
+    <details><summary>Alimento é recurso limitado</summary>
+      <p>Para chegar ao prato, o alimento consumiu água, terra, energia e trabalho. Descartá-lo desperdiça tudo isso.</p></details>
+    <details><summary>Cozinha e alunos trabalham juntos</summary>
+      <p>Quando cada aluno serve só o que vai comer, a cozinha aprende as quantidades certas e a escola gasta menos.</p></details>
+  </div>
+</section>
+
+<!-- ========== CARDÁPIO MENSAL ========== -->
+<section id="cardapio" class="secao reveal">
+  <h2>Cardápio do 2º semestre</h2>
+  <p class="intro">Estes são os pratos reais servidos na escola. O cardápio tem um ciclo de 5 semanas e só se repete depois dele. Escolha a semana e passe o mouse (ou toque) em uma linha para ver uma dica.</p>
+  <div class="abas" id="abas"></div>
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Dia</th><th>Prato do dia</th><th>Grupo</th><th>Acompanha</th></tr></thead>
+      <tbody id="corpo"></tbody>
+    </table>
+  </div>
+  <p id="dica" class="dica" role="status">Dica: sirva pouco e repita se quiser.</p>
+
+  <!-- Legenda dos grupos da matriz oficial -->
+  <ul class="legenda" aria-label="Legenda dos grupos do cardápio">
+    <li><span class="grupo g1">Grupo 1</span> Arroz temperado <small>1 vez por semana</small></li>
+    <li><span class="grupo g2">Grupo 2</span> Preparações diversas <small>1 vez por semana</small></li>
+    <li><span class="grupo g3">Grupo 3</span> Feijão <small>1 vez por semana</small></li>
+    <li><span class="grupo g4">Grupo 4</span> Canjiquinha, mingau, polenta ou sopa <small>1 vez por semana</small></li>
+    <li><span class="grupo g5">Grupo 5</span> Preparações doces <small>3 vezes por mês</small></li>
+    <li><span class="grupo g6">Grupo 6</span> Doces regionais <small>1 vez por mês</small></li>
+  </ul>
+  <p class="nota nota-centro">As frutas devem ser oferecidas no mínimo 2 vezes por semana. Cardápio aprovado pela nutricionista da SRE Pará de Minas em 19/05/2026.</p>
+
+  <!-- Fotos: matriz oficial e mural do cardápio da escola -->
+  <h3 class="sub">Veja de perto</h3>
+  <div class="galeria">
+    <figure>
+      <button class="foto" type="button" data-src="cardapio-oficial.png" data-alt="Matriz de Planejamento de Cardápios 2026 – Polo 5 e 6, Pará de Minas">
+        <img src="cardapio-oficial.png" alt="Foto da Matriz de Planejamento de Cardápios 2026, Polo 5 e 6 de Pará de Minas" loading="lazy">
+        <span class="lupa">Ampliar</span>
+      </button>
+      <figcaption><strong>Matriz oficial de cardápios</strong>O documento que define o que é servido em cada dia das 5 semanas, organizado por cores de grupos.</figcaption>
+    </figure>
+    <figure>
+      <button class="foto" type="button" data-src="mural-cardapio.jpg" data-alt="Mural do cardápio na escola: cardápio mensal, pratos de cada dia e boas maneiras do refeitório">
+        <img src="mural-cardapio.jpg" alt="Mural do cardápio na escola, com o cardápio de cada dia da semana e o cartaz Boas maneiras do refeitório" loading="lazy">
+        <span class="lupa">Ampliar</span>
+      </button>
+      <figcaption><strong>Mural do cardápio</strong>“Em nossa escola, valorizamos o alimento, evitamos o desperdício e espalhamos gratidão.”</figcaption>
+    </figure>
+  </div>
+
+  <div class="caixa-maneiras">
+    <h3>Boas maneiras do refeitório</h3>
+    <ul>
+      <li>Lave bem as mãos antes de comer.</li>
+      <li>Sente direitinho à mesa.</li>
+      <li>Agradeça pelo alimento que recebeu.</li>
+      <li>Fale baixo e respeite o momento da refeição.</li>
+      <li>Coma com calma e mastigue bem.</li>
+      <li>Coloque o lixo no lugar certo.</li>
+    </ul>
+  </div>
+
+  <!-- Janela para ampliar as fotos -->
+  <dialog id="ampliada" class="ampliada" aria-label="Foto ampliada">
+    <button type="button" class="fechar" id="ampliadaFechar" aria-label="Fechar foto">×</button>
+    <img id="ampliadaImg" src="" alt="">
+    <p id="ampliadaLegenda" class="nota"></p>
+  </dialog>
+</section>
+
+<!-- ========== TUDO ESTÁ LIGADO ========== -->
+<section id="conexoes" class="secao reveal">
+  <h2>Tudo está ligado</h2>
+  <p class="intro">Cada alimento jogado fora leva junto a água que o regou, o tempo de quem plantou e cozinhou e a energia gasta no caminho. Toque em um círculo para ver como eles se conectam.</p>
+  <div class="rede">
+    <svg viewBox="0 0 300 300" role="group" aria-label="Rede ligando alimento, água, tempo e energia">
+      <g class="elos">
+        <line data-p="alimento-agua" x1="150" y1="45" x2="255" y2="150"/><line data-p="alimento-tempo" x1="150" y1="45" x2="150" y2="255"/>
+        <line data-p="alimento-energia" x1="150" y1="45" x2="45" y2="150"/><line data-p="agua-tempo" x1="255" y1="150" x2="150" y2="255"/>
+        <line data-p="agua-energia" x1="255" y1="150" x2="45" y2="150"/><line data-p="tempo-energia" x1="150" y1="255" x2="45" y2="150"/>
+      </g>
+      <g class="no" data-k="alimento" tabindex="0" role="button" aria-label="Alimento" style="--c:var(--verde-vivo)"><circle cx="150" cy="45" r="36"/><text x="150" y="49">Alimento</text></g>
+      <g class="no" data-k="agua" tabindex="0" role="button" aria-label="Água" style="--c:var(--agua)"><circle cx="255" cy="150" r="36"/><text x="255" y="154">Água</text></g>
+      <g class="no" data-k="tempo" tabindex="0" role="button" aria-label="Tempo" style="--c:var(--tempo)"><circle cx="150" cy="255" r="36"/><text x="150" y="259">Tempo</text></g>
+      <g class="no" data-k="energia" tabindex="0" role="button" aria-label="Energia" style="--c:var(--energia)"><circle cx="45" cy="150" r="36"/><text x="45" y="154">Energia</text></g>
+    </svg>
+    <div class="rede-info" id="redeInfo" aria-live="polite"></div>
+  </div>
+  <hr class="divisor-conteudo" aria-hidden="true">
+  <div class="caixa calc">
+    <h3>Quanta água vai para o lixo junto?</h3>
+    <label for="alim">Alimento</label><select id="alim"></select>
+    <label for="gramas">Quantidade jogada fora: <output id="gOut">100 g</output></label>
+    <input type="range" id="gramas" min="50" max="1000" step="50" value="100">
+    <p class="resultado" id="calcRes" aria-live="polite"></p>
+    <p class="nota">Valores médios aproximados de pegada hídrica (água usada para produzir o alimento).</p>
+    <button class="btn btn-claro entendendo-trigger" id="abrirEntendendo" type="button" aria-haspopup="dialog" aria-controls="entendendoDialog">Entendendo</button>
+  </div>
+  <dialog class="entendendo-dialog" id="entendendoDialog" aria-labelledby="entendendoTitulo">
+    <div class="entendendo-cabecalho">
+      <h3 id="entendendoTitulo">Por que esses valores são tão altos?</h3>
+      <button class="entendendo-fechar" id="fecharEntendendo" type="button" aria-label="Fechar explicação">×</button>
+    </div>
+    <p>A pegada hídrica considera a água usada em toda a produção do alimento, não só a água que vemos no prato. Isso inclui a irrigação das plantações, a água para produzir a ração e cuidar dos animais, além do processamento.</p>
+    <p>Por isso, alguns alimentos, como a carne bovina, podem ter valores elevados. São estimativas médias: a quantidade varia conforme a região e o modo de produção.</p>
+  </dialog>
+</section>
+
+<!-- ========== ÁGUA ========== -->
+<section id="agua" class="secao tema tema-agua reveal">
+  <canvas id="ondas" aria-hidden="true"></canvas>
+  <div class="miolo">
+    <div>
+      <span class="etiqueta">Água</span>
+      <h2>Água: o ingrediente invisível</h2>
+      <p>Antes de chegar ao prato, o alimento bebeu água no campo e depois foi lavado e cozido. Jogar comida fora é jogar essa água fora também.</p>
+      <ul class="fatos">
+        <li><b>Cerca de 70%</b> da água doce captada no mundo é usada na agricultura.</li>
+        <li><b>Mais de 15 mil litros</b> de água, em média, são necessários para produzir 1 kg de carne bovina.</li>
+        <li><b>Cerca de 40 litros por dia</b> podem ser perdidos por uma torneira pingando.</li>
+      </ul>
+      <p class="dica-escola"><b>Na escola:</b> feche bem a torneira, lave os alimentos em uma bacia e reaproveite essa água (sem sabão) para regar plantas.</p>
+    </div>
+    <div class="painel">
+      <div class="tanque"><div class="nivel" id="nivel"></div><span id="litros">280 L</span></div>
+      <label for="dias">Torneira pingando há <output id="diasOut">7 dias</output></label>
+      <input type="range" id="dias" min="1" max="30" value="7">
+      <p class="nota">Mova o controle e passe o mouse pela seção para criar ondas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TEMPO ========== -->
+<section id="tempo" class="secao tema tema-tempo reveal">
+  <div class="miolo">
+    <div>
+      <span class="etiqueta">Tempo</span>
+      <h2>Tempo: o trabalho que ninguém vê</h2>
+      <p>Cada refeição reúne o trabalho de quem planta, colhe, transporta, cozinha e serve. Um prato jogado fora desperdiça também essas horas de dedicação.</p>
+      <ul class="fatos">
+        <li><b>De 3 a 5 meses</b> é, em média, o tempo do plantio à colheita do arroz.</li>
+        <li><b>Cerca de 2 a 3 meses</b> levam, em média, as variedades comuns de feijão para ficarem prontas.</li>
+        <li><b>Antes do sinal do recreio</b>, as merendeiras já cortaram, temperaram e cozinharam tudo.</li>
+      </ul>
+      <p class="dica-escola"><b>Na escola:</b> sirva só o que for comer e agradeça a quem prepara a merenda.</p>
+    </div>
+    <div class="painel">
+      <svg viewBox="0 0 120 120" class="relogio" aria-hidden="true"><circle cx="60" cy="60" r="54"/><g class="marcas"><path d="M60 10v8M110 60h-8M60 110v-8M10 60h8"/></g><line id="ponteiro" x1="60" y1="60" x2="60" y2="22"/><circle cx="60" cy="60" r="4" class="centro"/></svg>
+      <div class="etapas" id="etapas"></div>
+      <p id="etapaTxt" class="etapa-txt" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ENERGIA ========== -->
+<section id="energia" class="secao tema tema-energia reveal">
+  <div class="miolo">
+    <div>
+      <span class="etiqueta">Energia</span>
+      <h2>Energia: o que move a comida</h2>
+      <p>Máquinas no campo, geladeiras, caminhões, fogões e fornos gastam energia. Alimento desperdiçado é energia desperdiçada e, no lixo, ainda produz gás metano ao se decompor.</p>
+      <ul class="fatos">
+        <li><b>Cerca de 30%</b> da energia consumida no mundo é usada pelo sistema alimentar, segundo a FAO.</li>
+        <li><b>De 8% a 10%</b> dos gases de efeito estufa vêm de alimentos que não são consumidos, segundo a ONU.</li>
+        <li><b>Até 80% menos energia</b> é o que uma lâmpada de LED pode gastar em comparação a uma incandescente.</li>
+      </ul>
+      <p class="dica-escola"><b>Na escola:</b> apague as luzes ao sair da sala e mantenha a porta da geladeira fechada.</p>
+    </div>
+    <div class="painel">
+      <button class="lampada" id="lampada" type="button" aria-pressed="false" aria-label="Ligar ou desligar a lâmpada">
+        <svg viewBox="0 0 100 140" aria-hidden="true"><circle class="vidro" cx="50" cy="52" r="36"/><path class="fio" d="M40 80l6-18 8 0 6 18" fill="none"/><rect class="base" x="38" y="84" width="24" height="12" rx="2"/><rect class="base" x="41" y="98" width="18" height="10" rx="3"/></svg>
+      </button>
+      <p id="lampTxt" aria-live="polite">Lâmpada apagada. Clique para acender.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NOTÍCIAS (atualizam sozinhas) ========== -->
+<section id="noticias" class="secao faixa-verde reveal">
+  <div class="miolo">
+    <h2>Notícias e conscientização</h2>
+    <p class="intro">Reportagens mais recentes de cada tema, buscadas em tempo real. A lista se renova sozinha a cada 5 minutos.</p>
+    <div class="abas" id="temas"></div>
+    <div class="noticias" id="listaNoticias" aria-live="polite"></div>
+    <div class="rodape-noticias">
+      <button class="btn btn-claro" id="recarregar" type="button">Atualizar notícias</button>
+      <span id="statusNoticias" class="nota"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESULTADOS DA PESQUISA ========== -->
+<section id="resultados" class="secao reveal">
+  <h2>Resultados da pesquisa</h2>
+  <p class="intro">Perguntamos à comunidade da escola o que pensa sobre o desperdício de alimentos. Foram 67 respostas ao formulário. Veja o resultado de cada pergunta e clique em “Ver gráfico” para abrir a pizza completa.</p>
+
+  <!-- Destaques (valores tirados das perguntas 5, 6, 10 e 11) -->
+  <div class="destaques">
+    <div class="destaque"><strong>73,1%</strong><span>acham que existe muito desperdício de alimentos na escola</span></div>
+    <div class="destaque"><strong>98,5%</strong><span>percebem o maior desperdício nos pratos dos alunos</span></div>
+    <div class="destaque"><strong>67,2%</strong><span>acreditam, com certeza, que os próprios estudantes podem ajudar</span></div>
+    <div class="destaque"><strong>52,2%</strong><span>apontam servir porções menores e permitir repetir como a ação mais eficiente</span></div>
+  </div>
+
+  <!-- As 15 perguntas são desenhadas pelo script.js -->
+  <div class="quests" id="listaPesquisa"></div>
+  <p class="nota fonte-pesquisa nota-centro">Fonte: formulário “Desperdício de Alimentos na escola”, com 67 respostas.</p>
+
+  <!-- Janela com o gráfico de pizza de cada pergunta -->
+  <dialog id="graficoModal" class="ampliada grafico-modal" aria-labelledby="gmTitulo">
+    <button type="button" class="fechar" id="gmFechar" aria-label="Fechar gráfico">×</button>
+    <h3 id="gmTitulo"></h3>
+    <div class="gm-corpo">
+      <div id="gmDonut"></div>
+      <ul id="gmLegenda" class="gm-legenda"></ul>
+    </div>
+  </dialog>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <p>Projeto escolar – Professora Vera Lucia: Combate ao desperdício de alimentos</p>
+  <p>Turma: segundo ano 4</p>
+</footer>
+<button class="subir" id="subir" aria-label="Voltar ao topo">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

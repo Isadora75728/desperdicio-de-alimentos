@@ -113,7 +113,7 @@ function mostrarSemana(nome) {
     const tr = document.createElement("tr");
     const [dia, grupo, prato, extra] = linha;
     tr.innerHTML = `<td>${dia}</td><td>${prato}</td>`
-      + `<td><span class="grupo g${grupo}" title="${GRUPOS[grupo]}">Grupo ${grupo}</span></td><td>${extra}</td>`;
+      + `<td><span class="grupo g${grupo}" title="${GRUPOS[grupo]}">Grupo ${grupo}</span></td><td data-vazio="${extra === "—"}">${extra}</td>`;
     const dica = () => $("dica").textContent = "Dica: " + dicas[i % dicas.length];
     tr.addEventListener("mouseenter", dica);
     tr.addEventListener("click", dica);   // toque no celular

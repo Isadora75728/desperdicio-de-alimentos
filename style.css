@@ -347,3 +347,93 @@ td:nth-child(2) { min-width: 15rem; }
 .gm-legenda strong { color: var(--amarelo); }
 .gm-legenda small { grid-column: 2 / 4; color: var(--suave); }
 @media (max-width: 800px) { .galeria { grid-template-columns: 1fr; } .gm-corpo { grid-template-columns: 1fr; } .gm-corpo svg { max-width: 240px; margin: 0 auto; } }
+
+/* ===== CELULAR: layout compacto, macio e fácil de tocar ===== */
+@media (max-width: 800px) {
+  :root { --raio: 14px; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-size: 1rem; line-height: 1.6; overflow-x: hidden; }
+
+  /* Cabeçalho enxuto: emblema + logo + botão Menu */
+  .barra { gap: .5rem .6rem; padding: .55rem 1rem; }
+  .simbolo { order: 0; padding: .2rem .65rem .2rem .3rem; font-size: .68rem; line-height: 1.2; max-width: 55%; }
+  .simbolo img { width: 36px; height: 36px; }
+  .logo { order: 1; margin: 0 auto 0 0; }
+  .logo svg { width: 32px; height: 32px; }
+  .logo strong { font-size: 1.2rem; }
+  .menu-btn { order: 2; border-radius: 999px; padding: .45rem 1.1rem; }
+  .menu { order: 3; }
+  .menu.aberto { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; padding: .35rem 0 .3rem; }
+  .menu a { text-align: center; padding: .7rem .5rem; background: rgba(255,255,255,.07); border-radius: 12px; }
+  .menu a::after { display: none; }
+
+  /* Início: curva na base e botões fáceis de tocar */
+  .topo-hero { border-radius: 0 0 28px 28px; }
+  .hero { padding: 2rem 1rem 2.5rem; gap: 1.75rem; }
+  .hero h1 { font-size: clamp(1.9rem, 8.5vw, 2.4rem); }
+  .hero .btn { display: block; width: 100%; text-align: center; margin: .55rem 0; }
+  .prato-box { padding: 1.1rem; border-radius: 22px; }
+  .prato { width: min(200px, 100%); }
+
+  /* Seções mais próximas; as coloridas viram blocos arredondados */
+  .secao { padding: 2rem 1rem; scroll-margin-top: 4.5rem; }
+  .secao h2 { font-size: 1.6rem; }
+  .tema, .faixa-verde { margin: .75rem; padding: 1.6rem 1.1rem; border: 1px solid var(--linha); border-radius: 26px; }
+  .tema .miolo { gap: 1.5rem; }
+  .painel { padding: 1.1rem; border-radius: 20px; }
+  .fatos li { padding: .7rem .85rem; }
+  .lista { gap: .6rem; }
+  .divisor-conteudo { margin: 1.25rem 0; }
+  .caixa { padding: 1.25rem; }
+  .calc { min-height: 0; }
+  .rede { gap: 1rem; margin: 1rem 0; }
+  .rede svg { width: 100%; max-width: 320px; margin: 0 auto; display: block; }
+  .rede-info { min-height: 0; padding: 1.25rem; }
+
+  /* Abas deslizam de lado em vez de quebrar em várias linhas */
+  .abas, .faixa-verde .abas { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; max-width: none; margin: 1rem -1rem; padding: .25rem 1rem .6rem; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .faixa-verde .abas { margin-inline: -1.1rem; padding-inline: 1.1rem; }
+  .abas::-webkit-scrollbar { display: none; }
+  .abas button { flex: none; scroll-snap-align: start; border-radius: 999px; padding: .5rem 1rem; }
+
+  /* Cardápio: cada dia vira um cartão */
+  .tabela-wrap { overflow: visible; border: 0; box-shadow: none; background: none; }
+  table, tbody { display: block; background: none; }
+  thead { display: none; }
+  tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .2rem .75rem; align-items: center; background: var(--superficie); border: 1px solid var(--linha); border-radius: 18px; padding: .9rem 1.05rem; margin-bottom: .65rem; box-shadow: var(--sombra); }
+  td { display: block; border: 0; padding: 0; }
+  td:nth-child(1) { grid-column: 1; grid-row: 1; color: var(--amarelo); font-size: .82rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  td:nth-child(3) { grid-column: 2; grid-row: 1; justify-self: end; }
+  td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; min-width: 0; font-size: 1.05rem; line-height: 1.4; }
+  td:nth-child(4) { grid-column: 1 / -1; grid-row: 3; color: var(--suave); font-size: .9rem; }
+  td:nth-child(4)::before { content: "Acompanha: "; }
+  td[data-vazio="true"] { display: none; }
+  tbody tr:hover td:first-child { padding-left: 0; }
+  .dica { border-radius: 14px; }
+  .galeria figure, .caixa-maneiras { border-radius: 18px; }
+  .caixa-maneiras { padding: 1.1rem 1.15rem; }
+
+  /* Pesquisa e notícias */
+  .destaques { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1.25rem 0 1.5rem; }
+  .destaque { padding: .85rem .95rem; border-radius: 16px; }
+  .destaque strong { font-size: 2rem; }
+  .destaque span { font-size: .85rem; }
+  .quests { gap: 1rem; }
+  .quest { padding: 1.1rem; border-radius: 18px; }
+  .noticias { gap: .8rem; }
+  .noticias article { border-radius: 18px; }
+  .ampliada { max-width: 96vw; padding: .75rem; }
+
+  .rodape { padding: 1.5rem 1rem 2rem; border-radius: 28px 28px 0 0; margin-top: .75rem; }
+  .subir { right: 1rem; bottom: 1rem; }
+}
+@media (max-width: 520px) {
+  .simbolo span { display: none; }
+  .simbolo { padding: .2rem; background: #f3efe2; border: 0; border-radius: 50%; box-shadow: var(--sombra); }
+  .simbolo img { width: 34px; height: 34px; display: block; }
+  .destaque span { font-size: .8rem; }
+}
+/* Telas de toque não têm "passar o mouse": tira os deslocamentos do hover */
+@media (hover: none) {
+  details:hover, .fatos li:hover, .prato-box:hover, .galeria figure:hover, .destaque:hover, .cta:hover, .btn:hover, .abas button:hover { transform: none; }
+}
